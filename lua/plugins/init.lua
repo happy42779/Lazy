@@ -21,13 +21,10 @@ return {
   -- add pyright to lspconfig
   -- {
   --   "neovim/nvim-lspconfig",
-  --   ---@class PluginLspOpts
+  --   --- @class PluginLspOpts
   --   opts = {
-  --     ---@type lspconfig.options
-  --     servers = {
-  --       -- pyright will be automatically installed with mason and loaded with lspconfig
-  --       pyright = {},
-  --     },
+  --     --- @type lspconfig.options
+  --     servers = {},
   --   },
   -- },
 
@@ -73,7 +70,7 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        markdown = {"deno_fmt"},
+        markdown = {"deno"},
         python = {"autopep8"},
       }
     }
@@ -87,8 +84,8 @@ return {
         "stylua",
         "shellcheck",
         "shfmt",
-        "autopep8",
-        "deno_fmt",
+        "clang-format",
+        "deno"
       },
     },
   },
