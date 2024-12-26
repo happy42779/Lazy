@@ -29,7 +29,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.python" },
 
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
-    { import = "lazyvim.plugins.extras.coding.codeium" },
+    { import = "lazyvim.plugins.extras.ai.codeium" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.

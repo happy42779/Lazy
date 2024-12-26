@@ -1,6 +1,4 @@
 -- since this is just an example spec, don't actually load anything here and return an empty spec
--- stylua: ignore
-
 -- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
 --
 -- In your plugin files, you can:
@@ -68,12 +66,12 @@ return {
   -- formatter settings
   {
     "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {
-        markdown = {"deno"},
-        python = {"autopep8"},
-      }
-    }
+    opts = function(_, opts)
+      vim.list_extend(opts.formatters_by_ft, {
+        markdown = { "deno" },
+        python = { "autopep8" },
+      })
+    end,
   },
 
   -- add any tools you want to have installed below
@@ -85,12 +83,12 @@ return {
         "shellcheck",
         "shfmt",
         "clang-format",
-        "deno"
+        "deno",
       },
     },
   },
   --------- more custom configurations -------------
-  {"tpope/vim-repeat", event = "VeryLazy"},
+  { "tpope/vim-repeat", event = "VeryLazy" },
   -- giving mini-surround a try
   -- {"kylechui/nvim-surround", evnet = "VeryLazy", version = "*", config = true},
   -- using the default one in lazyvim?
@@ -98,12 +96,32 @@ return {
 
   {
     "folke/noice.nvim",
-    opts = function (_, opts)
-      table.insert(opts.routes, {filter = {event = "notify",find = "No information available"}, opts = {skip = true},
-      })
+    opts = function(_, opts)
+      table.insert(
+        opts.routes,
+        { filter = { event = "notify", find = "No information available" }, opts = { skip = true } }
+      )
       opts.presets.command_palette = false
       opts.presets.inc_rename = false
       opts.presets.lsp_doc_border = true
     end,
+  },
+  -- oil.nvim to replace neo-tree
+  {
+    "stevearc/oil.nvim",
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  },
+
+  -- disable lazyvim dashboard
+  {
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = {
+        enabled = false,
+      },
+    },
   },
 }

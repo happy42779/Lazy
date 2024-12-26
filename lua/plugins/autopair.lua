@@ -36,7 +36,8 @@ return {
       -- 	:with_pair(ts_conds.is_not_ts_node({'function'})),
 
       -- add space after = , but ignore for types listed after
-      Rule("=", "", { "-sh", "-zsh", "-bash", "-make" })
+      Rule("=", "", { "-sh", "-bash", "-zsh", "-make", "-dnsmasq", "-routeros" })
+        -- Rule("=", "")
         :with_pair(cond.not_inside_quote())
         :with_pair(function(opts)
           local last_char = opts.line:sub(opts.col - 1, opts.col - 1)
@@ -60,10 +61,13 @@ return {
           end
           return ""
         end)
-        :set_end_pair_length(0)
+        -- :with_pair(cond.not_filetypes({ "sh", "bash", "zsh", "make", "dnsmasq", "routeros" }))
+        :set_end_pair_length(
+          0
+        )
         :with_move(cond.none())
         :with_del(cond.none()),
-      -- js functions
+
       Rule("%(.*%)%s*%=>$", " {  }", { "typescript", "typescriptreact", "javascript" })
         :use_regex(true)
         :set_end_pair_length(2),
