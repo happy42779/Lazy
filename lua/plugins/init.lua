@@ -107,13 +107,17 @@ return {
     end,
   },
   -- oil.nvim to replace neo-tree
-  {
-    "stevearc/oil.nvim",
-    ---@module 'oil'
-    ---@type oil.SetupOpts
-    opts = {},
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
-  },
+  -- {
+  --   "stevearc/oil.nvim",
+  --   ---@module 'oil'
+  --   ---@type oil.SetupOpts
+  --   opts = {
+  --     keymaps = {
+  --       ["."] = { "actions.open_cwd", mode = "n" },
+  --     },
+  --   },
+  --   dependencies = { { "echasnovski/mini.icons", opts = {} } },
+  -- },
 
   -- disable lazyvim dashboard
   {
